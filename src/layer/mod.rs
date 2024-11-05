@@ -20,7 +20,7 @@ pub struct NoopCanonStateSubscriptions;
 
 impl CanonStateSubscriptions for NoopCanonStateSubscriptions {
     fn subscribe_to_canonical_state(&self) -> reth_provider::CanonStateNotifications {
-        let (_, receiver) = tokio::sync::broadcast::channel(0);
+        let (_, receiver) = tokio::sync::broadcast::channel(1);
         receiver
     }
 }
