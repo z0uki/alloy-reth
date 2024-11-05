@@ -6,9 +6,13 @@ edition = "2021"
 [dependencies]
 # todo: bump rev when we bump reth
 alloy-primitives = { version = "0.7.0", features = ["serde"] }
-alloy-provider = { git = "https://github.com/alloy-rs/alloy", default-features = false, rev = "39b8695" }
+alloy-provider = { git = "https://github.com/alloy-rs/alloy", rev = "39b8695", features = [
+    "ws",
+] }
 alloy-transport = { git = "https://github.com/alloy-rs/alloy", rev = "39b8695" }
+alloy-transport-ws = { git = "https://github.com/alloy-rs/alloy", rev = "39b8695" }
 alloy-rpc-types = { git = "https://github.com/alloy-rs/alloy", rev = "39b8695" }
+alloy-pubsub = { git = "https://github.com/alloy-rs/alloy", rev = "39b8695" }
 
 reth-provider = { git = "https://github.com/paradigmxyz/reth", package = "reth-provider", tag = "v0.2.0-beta.6" }
 reth-rpc = { git = "https://github.com/paradigmxyz/reth", package = "reth-rpc", tag = "v0.2.0-beta.6" }
@@ -20,8 +24,8 @@ reth-network-api = { git = "https://github.com/paradigmxyz/reth", package = "ret
 reth-primitives = { git = "https://github.com/paradigmxyz/reth", package = "reth-primitives", tag = "v0.2.0-beta.6" }
 reth-tasks = { git = "https://github.com/paradigmxyz/reth", package = "reth-tasks", tag = "v0.2.0-beta.6" }
 
-reth-db = { git = "https://github.com/paradigmxyz/reth", package = "reth-db", tag = "v0.2.0-beta.6", optional = true }
-reth-blockchain-tree = { git = "https://github.com/paradigmxyz/reth", package = "reth-blockchain-tree", tag = "v0.2.0-beta.6", optional = true }
+reth-db = { git = "https://github.com/paradigmxyz/reth", package = "reth-db", tag = "v0.2.0-beta.6" }
+reth-blockchain-tree = { git = "https://github.com/paradigmxyz/reth", package = "reth-blockchain-tree", tag = "v0.2.0-beta.6" }
 
 reth-exex = { git = "https://github.com/paradigmxyz/reth", package = "reth-exex", tag = "v0.2.0-beta.6", optional = true }
 reth-node-api = { git = "https://github.com/paradigmxyz/reth", package = "reth-node-api", tag = "v0.2.0-beta.6", optional = true }
@@ -32,5 +36,4 @@ eyre = "0.6.12"
 
 [features]
 default = []
-db = ["dep:reth-db", "dep:reth-blockchain-tree"]
 exex = ["dep:reth-exex", "dep:reth-node-api"]

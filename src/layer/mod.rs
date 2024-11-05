@@ -25,7 +25,6 @@ impl CanonStateSubscriptions for NoopCanonStateSubscriptions {
     }
 }
 
-#[cfg(feature = "db")]
 pub mod db;
 
 #[cfg(feature = "exex")]
