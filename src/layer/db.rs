@@ -20,9 +20,8 @@ pub type RethDBLayer =
 pub type RethDBProvider<P, T> =
     RethProvider<DBProvider, NoopTransactionPool, NoopNetwork, NoopCanonStateSubscriptions, P, T>;
 
-pub fn new_provider_from_db(db_path_env_var: &str) -> eyre::Result<DBProvider> {
-    let db_path = std::env::var(db_path_env_var)?;
-    let db_path = std::path::Path::new(db_path.as_str());
+pub fn new_provider_from_db(db_path: &str) -> eyre::Result<DBProvider> {
+    let db_path = std::path::Path::new(db_path);
 
     let db =
         Arc::new(open_db_read_only(db_path.join("db").as_path(), DatabaseArguments::new(ClientVersion::default()))?);
